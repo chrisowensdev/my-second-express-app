@@ -3,9 +3,15 @@
 const express = require('express');
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    const snippet = `<h1>Hello from the (refactored) Root Route!</h1>`;
-    res.status(200).send(snippet).end();
+router.get('/', (req, res) => {
+    res.render('template', {
+        locals: {
+            title: 'Home Page'
+        },
+        partials: {
+            partial: 'partial-index'
+        }
+    });
 });
 
 module.exports = router;
