@@ -15,7 +15,8 @@ server.listen(port, hostname, () => {
 
 // Controllers
 const rootController = (req, res) => {
-    res.status(200).send('Hello This is the root controller').end();
+    const snippet = `<h1>Hello from the Root Route!</h1>`;
+    res.status(200).send(snippet).end();
 };
 
 // Routes
