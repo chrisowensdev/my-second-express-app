@@ -1,9 +1,17 @@
+'use strict';
+
+const e = require('express');
 const express = require('express');
 const router = express.Router();
-const db = require('../models/conn');
+const ceosModel = require('../models/ceosModel');
 
-router.get("/", (req, res) => {
-    const snippet = `<h1>CEOs of Apple</h1>`;
+router.get("/", async (req, res) => {
+    const executiveData = await ceosModel.getAll();
+    let snippet = `<h1>CEOs of Apple</h1>`;
+    snippet += `<ul>`;
+    executiveData.map(executive => {
+        snippet += `<li>${executive.name}: ${executive.year}</li>`;
+    })
     res
         .status(200)
         .send(snippet)
