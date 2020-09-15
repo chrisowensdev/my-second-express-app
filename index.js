@@ -13,11 +13,6 @@ server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}`);
 });
 
-// Controllers
-const rootController = (req, res) => {
-    const snippet = `<h1>Hello from the Root Route!</h1>`;
-    res.status(200).send(snippet).end();
-};
+const rootController = require("./routes/index");
 
-// Routes
-app.get('/', rootController);
+app.use('/', rootController);
