@@ -15,6 +15,12 @@ app.set('view engine', 'html');
 
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
+app.use(express.json());
+app.use(
+    express.urlencoded({
+        extended: false,
+    })
+);
 
 const server = http.createServer(app);
 
